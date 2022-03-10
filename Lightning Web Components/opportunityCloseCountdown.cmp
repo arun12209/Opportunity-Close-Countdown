@@ -1,0 +1,53 @@
+<aura:component controller="OpptyCloseTimerCntrl" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="second" type="string"/>
+    <aura:attribute name="minute" type="string"/>
+    <aura:attribute name="hour" type="string"/>
+    <aura:attribute name="day" type="string"/>
+    <aura:attribute name="msg" type="String"/>
+    <aura:attribute name="isValid" type="Boolean" default="false"/>
+    <div class="slds">
+        <div class="slds-page-header">
+            <lightning:icon iconName="utility:clock" alternativeText="Countdown" size="small"/>
+            &nbsp;<b>OPPORTUNITY CLOSE COUNTDOWN</b>
+        </div>
+        <aura:if isTrue="{!v.isValid}">
+            <div class="timerHolder" >
+                <br/>
+                <span class="slds-badge">Time Remaining To Close This Opportunity</span>
+                <div class="slds-grid" style="margin-left:5px;">
+                    <div class="slds-col slds-size--3-of-12">
+                        <div id="day_holder">
+                            <center><b>DAYS</b></center>
+                            <div id="daysBox" >{!v.day}</div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size--3-of-12">
+                        <div id="hours_holder">
+                            <center><b>HOURS</b></center>
+                            <div  id="hoursBox"> {!v.hour}</div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size--3-of-12">
+                        <div id="minutes_holder">
+                            <center><b>MIN</b></center>
+                            <div id="minsBox" > {!v.minute} </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size--3-of-12">
+                        <div id="seconds_holder">
+                            <center><b>SEC</b></center>
+                            <div id="secsBox" > {!v.second} </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+            </div>
+            <aura:set attribute="else">
+                <div id="msg">
+                    {!v.msg}
+                </div>
+            </aura:set>
+        </aura:if> 
+    </div>
+</aura:component>
